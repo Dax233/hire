@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 工具链排错：装不上、连不上、跑一半断掉 — Dax233 Notes</title>
+<meta name="description" content="按「安装 → 连接 → 模型 → 编排」四层定位故障的顺序清单。写给正在被 AI 工具折腾的人，也写给未来的自己。">
+<link rel="canonical" href="https://dax233.github.io/hire/notes/ai-tooling-troubleshooting.html">
+<link rel="alternate" type="application/rss+xml" title="Dax233 Notes" href="feed.xml">
+<link rel="stylesheet" href="notes.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"AI 工具链排错：装不上、连不上、跑一半断掉","datePublished":"2026-11-12","description":"按「安装 → 连接 → 模型 → 编排」四层定位故障的顺序清单。写给正在被 AI 工具折腾的人，也写给未来的自己。","author":{"@type":"Person","name":"Dax233","url":"https://github.com/Dax233"}}</script>
+</head>
+<body>
+<main class="wrap">
+<div class="top"><span class="kicker">NOTES / DAX233</span><a href="../">← work with me</a></div>
+<h1>AI 工具链排错：装不上、连不上、跑一半断掉</h1>
+<div class="meta">2026-11-12 · AI 工具链, MCP, 排错</div>
+<blockquote><p>一个独立开发者的排查顺序清单。写给正在被 AI 工具折腾的人，也写给未来的自己。</p></blockquote>
+<h2>先说结论</h2>
+<p>AI 工具链的故障，九成落在四个位置：<strong>安装与权限、网络与代理、模型与凭据、工作流编排</strong>。按顺序查，比乱试快得多。</p>
+<p>顺序很重要：上一层没通，下一层的报错基本都是噪音。所以不要跳步，也不要一上来就怀疑代码。</p>
+<h2>一、安装阶段</h2>
+<ul><li>装不上：先确认系统版本与架构（x64 / arm64）、安装包是否完整（SHA256）、是否需要管理员权限</li><li>装完打不开：日志优先级是 应用日志 &gt; 系统事件 &gt; 启动器输出</li><li>两个常见坑：装进了用户目录而不是 Program Files；杀软静默拦截</li><li>判断标准：能不能用一个最小命令跑起来（<code>--version</code>），先别急着接业务</li></ul>
+<h2>二、连接阶段</h2>
+<ul><li>连不上：先分清是 DNS、TLS、代理还是服务端 4xx/5xx；一层一层往下排除</li><li>代理环境：检查分流规则是否覆盖目标域名、端口是否被占用、<code>NO_PROXY</code> 有没有写漏</li><li>MCP：先单独测 server 能否启动，再接客户端；stdio 和 HTTP 的失败表现完全不同</li><li>阶段性验证：<code>curl -v</code> 拿到 TLS 握手结果，比在客户端里猜有效率得多</li></ul>
+<h2>三、模型阶段</h2>
+<ul><li>本地模型加载失败：显存不足、量化格式不匹配、驱动版本太旧</li><li>API 报错：鉴权（key / 额度 / 区域）、路由（<code>base_url</code> 写错）、超时</li><li>一个容易忽略的点：同一个 key 在不同区域的可用模型不一样，报错信息往往只说 404</li></ul>
+<h2>四、工作流阶段</h2>
+<ul><li>跑一半断：先加日志，再做断点重跑；把长流程拆成幂等的小步骤</li><li>别一上来就重构，先复现；复现不了的问题不要「顺手优化」</li><li>记录改动：一次只改一个变量，否则下次出问题你分不清是谁的锅</li></ul>
+<h2>什么情况我不接</h2>
+<p>账号买卖或共享、破解、绕过软件限制、爬隐私数据。这几条没有例外。</p>
+<h2>一句话版本</h2>
+<p>装得上 → 连得上 → 模型跑得动 → 流程断得住。四步全过，再谈优化。</p>
+<section class="cta">
+<p class="kicker">NEED A HAND</p>
+<p>卡在某一步、报错看不懂？把工具版本和那条报错贴给我，我先免费判断是不是能修。</p>
+<p><a href="../">服务范围与报价 →</a> · <a href="mailto:bakadax@qq.com">bakadax@qq.com</a></p>
+</section>
+<div class="foot"><span>独立开发者 · 远程接单</span><span><a href="https://github.com/Dax233">github.com/Dax233</a></span></div>
+</main>
+</body>
+</html>

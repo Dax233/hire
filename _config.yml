@@ -1,0 +1,4 @@
+# Jekyll 配置：只发布站点内容，构建脚本和文章源文件不进 Pages。
+exclude:
+  - tools
+  - _notes

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel>
+<title>Dax233 Notes</title>
+<link>https://dax233.github.io/hire/notes/</link>
+<description>AI 工具链排错、文件格式解析与自动化记录</description>
+<language>zh-cn</language>
+<lastBuildDate>Thu, 12 Nov 2026 06:51:07 +0000</lastBuildDate>
+<item>
+<title>AI 工具链排错：装不上、连不上、跑一半断掉</title>
+<link>https://dax233.github.io/hire/notes/ai-tooling-troubleshooting.html</link>
+<guid>https://dax233.github.io/hire/notes/ai-tooling-troubleshooting.html</guid>
+<description>按「安装 → 连接 → 模型 → 编排」四层定位故障的顺序清单。写给正在被 AI 工具折腾的人，也写给未来的自己。</description>
+<pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+</item>
+<item>
+<title>拆一个二进制格式：从 pxls.bytes 还原可编辑工程文件</title>
+<link>https://dax233.github.io/hire/notes/pxls-binary-format.html</link>
+<guid>https://dax233.github.io/hire/notes/pxls-binary-format.html</guid>
+<description>一次小逆向：不重写整个格式，只找最小差异。把游戏导出的像素资产还原成 PixelLiner 可以直接打开的工程文件。</description>
+<pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+</item>
+</channel></rss>

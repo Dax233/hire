@@ -37,3 +37,10 @@ Account or credential services, bypassing software protections, academic work, o
 小单通常 30-150 美元；全程文字沟通，不需要电话。
 
 邮箱：bakadax@qq.com
+
+## 站点结构 / 构建
+
+- `index.html` — 承接页（静态，直接编辑）
+- `_notes/*.md` — 文章源文件（front matter + 少量 markdown 语法）
+- `tools/build_notes.py` — 生成 `notes/*.html`、`notes/index.html`、`notes/feed.xml`、`sitemap.xml`；纯标准库，无第三方依赖
+- 改完文章后运行 `python3 tools/build_notes.py`，再把生成的 HTML 一起提交

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拆一个二进制格式：从 pxls.bytes 还原可编辑工程文件 — Dax233 Notes</title>
+<meta name="description" content="一次小逆向：不重写整个格式，只找最小差异。把游戏导出的像素资产还原成 PixelLiner 可以直接打开的工程文件。">
+<link rel="canonical" href="https://dax233.github.io/hire/notes/pxls-binary-format.html">
+<link rel="alternate" type="application/rss+xml" title="Dax233 Notes" href="feed.xml">
+<link rel="stylesheet" href="notes.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"拆一个二进制格式：从 pxls.bytes 还原可编辑工程文件","datePublished":"2026-11-12","description":"一次小逆向：不重写整个格式，只找最小差异。把游戏导出的像素资产还原成 PixelLiner 可以直接打开的工程文件。","author":{"@type":"Person","name":"Dax233","url":"https://github.com/Dax233"}}</script>
+</head>
+<body>
+<main class="wrap">
+<div class="top"><span class="kicker">NOTES / DAX233</span><a href="../">← work with me</a></div>
+<h1>拆一个二进制格式：从 pxls.bytes 还原可编辑工程文件</h1>
+<div class="meta">2026-11-12 · 文件格式, 逆向, 像素美术</div>
+<blockquote><p>一次小型的逆向记录：不重写整个格式，只找最小差异。</p></blockquote>
+<h2>背景</h2>
+<p>一款同人游戏的像素资产有两种形态：游戏导出的 <code>pxls.bytes</code>（图集 + UV），和 PixelLiner 的工程文件 <code>.pxl</code>。想改里面的像素小人，但常见工具只能拆出图集和 PNG，还原不回可编辑工程。</p>
+<h2>观察</h2>
+<ol><li>两种文件都以 <code>%PACK_SECTION%</code> 为核心，差别在于：导出格式的图集记录带一个「贴图外置」标志位</li><li>把标志位清掉、PNG 内嵌回去，文件就变成 PixelLiner 能直接打开的形态</li><li>打开后它会自动把 PXLS 转成可编辑角色，另存就得到标准工程文件</li></ol>
+<p>结论：<strong>不需要重新实现整个工程格式，只需要处理这一个差异点。</strong></p>
+<h2>实现</h2>
+<ul><li>纯标准库解析，不依赖 Pillow</li><li>从 PACK 段读每个图块的 UV，从纹理图集裁出单张 PNG</li><li>重建 pxl：改标志位、内嵌 PNG、补齐段表</li><li><code>--verify</code> 做结构自校验，避免「看起来能打开」但结构损坏</li></ul>
+<p>只做容器级改写：解析 section 表，只替换 <code>%PACK_SECTION%</code> 的内容，其余段（<code>%POSE_SECTION%</code>、<code>%PTCL_SECTION%</code>、<code>%IMGV_SECTION%</code> 等）原样复制。这样风险最小，也不会因为猜错段结构把文件写坏。</p>
+<h2>为什么不直接重写格式</h2>
+<p>因为成本不在写代码，在于<strong>确认自己没理解错</strong>。二进制格式里最贵的错误是「读出来像对、写回去全歪」。只改一个标志位，可验证面积小，出错也能定位。</p>
+<h2>教训</h2>
+<ol><li>先找最小差异，别一上来重写整个格式</li><li>用真实样本 + 失败样本对照，比读文档快</li><li>自校验很便宜，能省掉大量「看起来成功」的返工</li></ol>
+<p>工具在 <a href=\"https://github.com/Dax233/AICPxlsUnpacker\">github.com/Dax233/AICPxlsUnpacker</a>。</p>
+<section class="cta">
+<p class="kicker">NEED A HAND</p>
+<p>有打不开的工程文件、或者想把某个数据转成可编辑格式？发一个样本过来，我先看看可行性。</p>
+<p><a href="../">服务范围与报价 →</a> · <a href="mailto:bakadax@qq.com">bakadax@qq.com</a></p>
+</section>
+<div class="foot"><span>独立开发者 · 远程接单</span><span><a href="https://github.com/Dax233">github.com/Dax233</a></span></div>
+</main>
+</body>
+</html>
