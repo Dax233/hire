@@ -124,7 +124,7 @@ PAGE = """<!doctype html>
 </head>
 <body>
 <main class="wrap">
-<div class="top"><span class="kicker">NOTES / DAX233</span><a href="../">← work with me</a></div>
+<div class="top"><span class="kicker">NOTES / DAX233</span><span><a href="./">← notes</a> · <a href="../">hire</a></span></div>
 <h1>%(title)s</h1>
 <div class="meta">%(date)s · %(tags)s</div>
 %(body)s
