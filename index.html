@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work with me — Dax</title>
+<style>
+:root{--paper:#F2F1EC;--ink:#17191B;--mute:#6B7075;--line:#C9CAC4;--seal:#C0392B;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;line-height:1.65}
+.grid{position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,25,27,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,25,27,.05) 1px,transparent 1px);background-size:24px 24px}
+.wrap{max-width:860px;margin:0 auto;padding:56px 24px 80px;position:relative}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--mute)}
+h1{font-size:clamp(44px,8vw,92px);line-height:1.02;letter-spacing:-.02em;margin:40px 0 10px}
+.sub{font-size:clamp(18px,3vw,24px);color:var(--mute);margin-bottom:36px}
+h2{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--mute);margin:38px 0 12px}
+ul{list-style:none}
+ul li{padding-left:18px;position:relative;margin-bottom:9px}
+ul li:before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;background:var(--ink)}
+ol{padding-left:20px}
+ol li{margin-bottom:9px}
+.tag{display:inline-block;border:1px solid var(--line);padding:3px 9px;font-family:var(--mono);font-size:12px;color:var(--mute);margin:10px 6px 0 0}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{width:150px;font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.1em}
+.mail{font-family:var(--mono);border-bottom:2px solid var(--ink);text-decoration:none}
+a{color:inherit}
+.stamp{position:absolute;right:24px;top:118px;border:3px solid var(--seal);color:var(--seal);border-radius:50%;width:112px;height:112px;display:flex;align-items:center;justify-content:center;transform:rotate(-9deg);font:700 14px var(--mono);letter-spacing:.14em;opacity:.85}
+footer{margin-top:64px;border-top:2px solid var(--ink);padding-top:16px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--mute)}
+@media (max-width:640px){.stamp{display:none}header{flex-direction:column;gap:6px}}
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<main class="wrap">
+<header><span class="kicker">SERVICE LIST / DAX233</span><span class="kicker">ASYNC · TEXT ONLY</span></header>
+<div class="stamp">OPEN</div>
+<h1>Work<br>with me</h1>
+<p class="sub">Small, fixed-scope paid work from an independent developer.</p>
+
+<h2>WHAT I TAKE ON</h2>
+<ul>
+<li><strong>AI tooling</strong> — setup and troubleshooting for MCP servers, agent CLIs, local model runners, small workflow automations and plugins.</li>
+<li><strong>Python automation</strong> — scripts, batch file processing, data cleaning, file parsing, fixing scripts that stopped working.</li>
+<li><strong>File formats</strong> — binary/text format analysis and conversion tools.</li>
+</ul>
+
+<h2>HOW IT WORKS</h2>
+<ol>
+<li>Email me with what you need, tool + version, OS, and the exact error or a sample file.</li>
+<li>I reply with scope and a fixed quote (small jobs typically $30–$150).</li>
+<li>You approve; I build and test it.</li>
+<li>Delivery: files + short usage note, one revision round included.</li>
+</ol>
+<span class="tag">no calls needed</span><span class="tag">written handover</span><span class="tag">tested before delivery</span>
+
+<h2>WHAT YOU GET</h2>
+<ul>
+<li>A runnable script or plugin, tested on a clean environment</li>
+<li>A short README: what it does, how to run it, known limits</li>
+<li>One revision round within 7 days of delivery</li>
+</ul>
+
+<h2>WHAT I DON'T TAKE</h2>
+<ul>
+<li>Account or credential services</li>
+<li>Bypassing software protections</li>
+<li>Academic work</li>
+<li>Scraping private data</li>
+</ul>
+
+<h2>CONTACT</h2>
+<table>
+<tr><td>EMAIL</td><td><a class="mail" href="mailto:bakadax@qq.com">bakadax@qq.com</a></td></tr>
+<tr><td>GITHUB</td><td><a href="https://github.com/Dax233">github.com/Dax233</a></td></tr>
+<tr><td>BLOG</td><td><a href="https://blog.bakadax.top">blog.bakadax.top</a></td></tr>
+</table>
+
+<h2>合作 / 中文</h2>
+<p>独立开发者，接小项目：AI 工具链配置与排错、Python 自动化脚本、二进制/文件格式解析。</p>
+<p>流程：邮件说明需求 → 范围和固定报价 → 开工 → 交付文件和使用说明（含一轮修改）。小单通常 30–150 美元，全程文字沟通，不需要电话。</p>
+
+<footer><span>独立开发者 · 远程接单</span><span>github.com/Dax233</span></footer>
+</main>
+</body>
+</html>
